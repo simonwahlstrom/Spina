@@ -11,7 +11,6 @@ $(document).on 'click', 'nav#primary a:not(.back-to-main-menu)', (e) ->
 
 $(document).on 'click', 'nav#primary > ul > li > a', (e) ->
   if $(this).parent().find('ul').length > 0
-    e.preventDefault()
-
     $(this).parent().siblings().removeClass('active')
     $(this).parent().addClass('active')
+    $(this).parent().find('.first-item').addClass('active')

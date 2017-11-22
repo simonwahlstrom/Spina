@@ -7,7 +7,7 @@
         = icon('caret-right')
 
       %ul
-        %li{class: ('active' if current_admin_path.start_with?('/pages') || current_admin_path.start_with?('/navigations'))}
+        %li.first-item{class: ('active' if current_admin_path.start_with?('/pages') || current_admin_path.start_with?('/navigations'))}
           = link_to t('spina.website.pages'), spina.admin_pages_path
         %li{class: ('active' if current_admin_path.start_with?('/photos', '/attachments'))}
           = link_to t('spina.website.media_library'), spina.admin_photos_path
@@ -28,7 +28,7 @@
         = icon('caret-right')
 
       %ul
-        %li{class: ('active' if params[:action] == 'edit' && params[:controller] == 'spina/admin/accounts')}
+        %li.first-item{class: ('active' if params[:action] == 'edit' && params[:controller] == 'spina/admin/accounts')}
           = link_to t('spina.preferences.account'), spina.edit_admin_account_path
         %li{class: ('active' if params[:action] == 'style'), style: "display: none;"}
           = link_to t('spina.preferences.style'), spina.style_admin_account_path
