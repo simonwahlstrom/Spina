@@ -12,7 +12,7 @@ $.fn.uploadPhoto = ->
         $(this).find('.customfile').addClass('loading')
         data.submit()
       else
-        alert("#{file.name} is geen gif-, jpeg- of png-bestand")
+        alert("#{file.name} is not a gif-, jpeg- or png-file")
     done: (e, data) ->
       $(this).find('.customfile').removeClass('loading')
 
@@ -24,12 +24,12 @@ $.fn.uploadDocument = ->
     dropZone: $(this).find('.attachment-field')
     maxNumberOfFiles: 1
     add: (e, data) ->
-      types = /(\.|\/)(pdf|docx?|rtf|txt)$/i
+      types = /(\.|\/)(pdf|docx?|rtf|txt|xlsx)$/i
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
         $(this).find('.customfile').addClass('loading')
         data.submit()
       else
-        alert("#{file.name} is geen pdf-, word-, txt- of rtf-bestand")
+        alert("#{file.name} is not a pdf-, word-, txt-, xlsx- or rtf-file")
     done: (e, data) ->
       $(this).find('.customfile').removeClass('loading')
