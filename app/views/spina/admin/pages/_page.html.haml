@@ -2,8 +2,8 @@
   = page.menu_title
   - if page.draft?
     %small (#{t('spina.pages.concept')})
-  - elsif !page.show_in_menu?
-    %small (#{t('spina.pages.show_in_menu')})
+  - elsif page.show_in_menu?
+    %small (in navigation)
 
   - if page.skip_to_first_child
     %small (#{raw t('spina.pages.skip_to_first_child')})
