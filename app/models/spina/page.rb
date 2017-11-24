@@ -91,6 +91,10 @@ module Spina
       theme.page_parts.select { |page_part| page_part[:name].in? view_template_config(theme)[:page_parts] }
     end
 
+    def subsite_title
+      title.split('.').first.capitalize
+    end
+
     private
 
       def touch_navigations
