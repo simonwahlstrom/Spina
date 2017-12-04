@@ -13,6 +13,19 @@
       .horizontal-form-content
         = f.text_field :description, placeholder: Spina::Page.human_attribute_name(:description_placeholder)
 
+    .horizontal-form-group
+      .horizontal-form-label
+        Meta keywords
+        %small Separate keywords with commas
+      .horizontal-form-content
+        = f.text_field :keywords, placeholder: "Keywords"
+
+    .horizontal-form-group
+      .horizontal-form-label
+        Meta author
+      .horizontal-form-content
+        = f.text_field :author, placeholder: "Author"
+
     - unless @page.new_record?
       .horizontal-form-group
         .horizontal-form-label
