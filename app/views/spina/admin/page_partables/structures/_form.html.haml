@@ -1,7 +1,7 @@
 .horizontal-form-content
   .structure-form
     .structure-form-menu
-      %label= "Additional content"
+      %label= f.object.title
 
       %ul
         - f.object.page_partable.structure_items.sort_by(&:position).each_with_index do |structure_item, index|
