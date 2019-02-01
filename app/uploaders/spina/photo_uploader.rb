@@ -11,6 +11,10 @@ module Spina
       process resize_to_fill: [150, 150]
     end
 
+    version :thumb_site do
+      process resize_to_limit: [700, nil]
+    end
+
     def too_large?(new_file)
       new_file.size > 120 * 1000
     end
