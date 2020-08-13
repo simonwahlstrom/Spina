@@ -56,7 +56,7 @@ module Spina
 
       def photo_collection_select
         @selected_photo_ids = Photo.where(id: params[:selected_photo_ids]).ids
-        @photos = Photo.order_by_ids(@selected_photo_ids).sorted.page(params[:page])
+        @photos = Photo.order_by_ids(@selected_photo_ids).sorted #.page(params[:page])
         @photo = Photo.new
 
         if params[:page].present?
@@ -74,19 +74,19 @@ module Spina
         @photos = Photo.find(params[:photo_ids]) if params[:photo_ids].present?
       end
 
-      def trix_insert    
-        @photo = Photo.find(params[:photo_id])    
+      def trix_insert
+        @photo = Photo.find(params[:photo_id])
       end
- 
+
       def trix_select
-        @photos = Photo.sorted.page(params[:page])    
-        @photo = Photo.new    
-    
-        if params[:page].present?   
-          render :trix_infinite_scroll   
-        else    
-          render :trix_select    
-        end   
+        @photos = Photo.sorted.page(params[:page])
+        @photo = Photo.new
+
+        if params[:page].present?
+          render :trix_infinite_scroll
+        else
+          render :trix_select
+        end
       end
 
       private
