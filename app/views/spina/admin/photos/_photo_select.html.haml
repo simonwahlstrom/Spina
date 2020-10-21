@@ -1,16 +1,18 @@
 .modal.modal-large
   %section
     .gallery-select.gallery
-      .item.item-small.item-uploader
-        = form_for [spina, :admin, @photo], html: {multipart: true} do |f|
-          = f.label :file, t('spina.photos.upload_image')
-          = f.file_field :files, multiple: true, data: {customfileinput: true}
+      -# .item.item-small.item-uploader
+        -# = form_for [spina, :admin, @photo], html: {multipart: true} do |f|
+        -#   = f.label :file, t('spina.photos.upload_image')
+        -#   = f.file_field :files, multiple: true, data: {customfileinput: true}
 
       = form_tag spina.insert_photo_admin_photos_path(params[:page_part_id]), remote: true, class: 'gallery-prepend-image' do
         = hidden_field_tag :hidden_field_id, @hidden_field_id
 
-        .infinite-scroll
-          = render partial: 'spina/admin/photos/photo_single_picker', collection: @photos
+        .infinite-scroll.with-folders
+          - @photos.group_by{ |photo| photo.media_folder&.name }.sort_by{ |folder, _| folder ? folder : "zzz" }.each do |folder, photos_in_folder|
+            .folder
+              %h3= folder || "No folder"
+              = render partial: 'spina/admin/photos/photo_single_picker', collection: photos_in_folder
 
-        .infinite-pagination= link_to_next_page @photos, 'Next', params: params.slice(:selected_photo_id).permit(:selected_photo_id), remote: true
-
+        -# .infinite-pagination= link_to_next_page @photos, 'Next', params: params.slice(:selected_photo_id).permit(:selected_photo_id), remote: true
