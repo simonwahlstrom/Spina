@@ -44,7 +44,7 @@ module Spina
       def photo_select
         @selected_photo_id = Photo.find_by(id: params[:selected_photo_id]).try(:id)
         @hidden_field_id = params[:hidden_field_id]
-        @photos = Photo.order_by_ids(@selected_photo_id).sorted.page(params[:page])
+        @photos = Photo.order_by_ids(@selected_photo_id).sorted #.page(params[:page])
         @photo = Photo.new
 
         if params[:page].present?

@@ -45,6 +45,12 @@ Spina::Engine.routes.draw do
       end
     end
 
+    resources :structure_parts do
+      collection do
+        get 'destroy/:id' => 'structure_parts#destroy', as: :destroy
+      end
+    end
+
     resources :media_folders
 
     resources :photos do

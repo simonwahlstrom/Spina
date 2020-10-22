@@ -8,7 +8,10 @@
         = t('spina.choose_from_library')
 
     - if f.object.structure_partable && f.object.structure_partable.file.present?
-
       .attachment= f.object.structure_partable.name
 
     = f.hidden_field :structure_partable_id
+
+  - if f.object.structure_partable && f.object.structure_partable.file.present?
+    %a.delete-attachment{ onclick: "return confirm('Are you sure you want to remove this attachment from the page? This page will be reloaded afterwards and any other unsaved changes will be lost.')", href: "/admin/structure_parts/destroy/#{f.object.id}" }
+      %i.icon.icon-trash
